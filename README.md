@@ -28,6 +28,8 @@ A comprehensive tool for analyzing academic papers, creating flowcharts, and pro
 3. Create a `.env` file in the root directory and add your TogetherAI API key:
    ```plaintext
    TOGETHER_API_KEY="your-together-api-key-here"
+   SERPAPI_KEY="your-serpapi-key-here"
+   PROJECT_TOKEN="your-project-token-here"
    ```
 
 ## Usage
@@ -47,7 +49,7 @@ A comprehensive tool for analyzing academic papers, creating flowcharts, and pro
    - Generate visualizations like flowcharts and concept maps.
    - Extract research highlights.
    - Find similar papers.
-   - Translate the paper to different languages.
+   - Develop startup insights based on analyses provided.
 
 ## Requirements
 
@@ -73,7 +75,7 @@ MIT License (No specific license file found)
 ## Version Information
 
 Version: 1  
-Last Updated: 2025-03-25T10:01:14.433Z  
+Last Updated: 2025-03-25T12:16:19Z  
 
 ## Release Notes
 
@@ -85,3 +87,11 @@ Last Updated: 2025-03-25T10:01:14.433Z
 
 ### Release Date 
 Released on March 25, 2025.
+
+### Key Files Modified Since Last Update
+- `.gitignore`: Updated to include additional entries for logging files and environment variables management.
+- `app.py`: Modified to enhance functionalities such as chat interactions, file uploads, and processing logic improvements that support new features added in this version.
+- `prompt_analytics.log`: Now logs detailed analytics regarding prompt tracking within application functions dynamically capturing submission data.
+- `requirements.txt`: Updated to ensure all necessary libraries are included for smooth operation of enhanced functionalities in PaperSense. 
+
+This README provides an organized overview of PaperSense’s functionalities while guiding users through setup and usage processes clearly.
