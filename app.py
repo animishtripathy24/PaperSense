@@ -1364,7 +1364,10 @@ def main():
                         # Check if we got meaningful content
                         if startup_insights and len(startup_insights) > 100:
                             st.success("Startup insights generated successfully!")
-                            st.markdown(startup_insights)
+                            with st.expander("See Full Insights"):
+                                st.markdown(startup_insights)
+
+
                         else:
                             st.error("No valid startup insights could be generated. Error message: " + startup_insights)
                             st.warning("Please try again or check if your API key is configured correctly.")
