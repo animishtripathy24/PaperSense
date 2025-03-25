@@ -18,3 +18,5 @@ openai
 altair
 tiktoken
 google-search-results
+urllib3
+pypeprompts

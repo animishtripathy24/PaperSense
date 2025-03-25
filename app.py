@@ -18,9 +18,16 @@ from htmlTemplates import css, bot_template, user_template
 from langchain.prompts import PromptTemplate
 import requests
 from serpapi import GoogleSearch
+import urllib.parse
+from pypeprompts import PromptAnalyticsTracker
 
 # Load environment variables
 load_dotenv()
+
+# Get project token from environment variables
+project_token = os.getenv("PROJECT_TOKEN")
+# Initialize the tracker with your project token
+tracker = PromptAnalyticsTracker(project_token=project_token)
 
 # Set TogetherAI API Key from environment variable - access it but don't modify
 together_api_key = os.getenv("TOGETHER_API_KEY")
@@ -172,6 +179,11 @@ def get_conversation_chain(vectorstore):
 
 def handle_research_query(user_question):
     """Handle research-specific queries with enhanced paper interaction"""
+    # Initialize vectorstore and get conversation chain if needed
+    if "vectorstore" in st.session_state and st.session_state.vectorstore:
+        if "conversation" not in st.session_state or st.session_state.conversation is None:
+            st.session_state.conversation = get_conversation_chain(st.session_state.vectorstore)
+    
     # Get current chat history from session state
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
@@ -180,7 +192,7 @@ def handle_research_query(user_question):
     chat_history_tuples = []  # Store (human_message, ai_message) tuples for LangChain
     
     # Process existing chat history to prepare for chain
-    for i in range(0, len(st.session_state.chat_history), 2):
+    for i in range(0, len(st.session_state.chat_history)-1, 2):
         if i+1 < len(st.session_state.chat_history):
             human_msg = st.session_state.chat_history[i].get('content', '')
             ai_msg = st.session_state.chat_history[i+1].get('content', '')
@@ -192,16 +204,12 @@ def handle_research_query(user_question):
     # Apply query-specific prompt enhancement
     enhanced_response = get_enhanced_response(user_question, query_type, st.session_state.pdf_text, chat_history_tuples)
     
-    # Add to session state chat history
+    # Add new message pair to the chat history
     st.session_state.chat_history.append({"role": "user", "content": user_question})
     st.session_state.chat_history.append({"role": "assistant", "content": enhanced_response})
     
-    # Display all chat messages
-    for i, message in enumerate(st.session_state.chat_history):
-        if message["role"] == "user":
-            st.write(user_template.replace("{{MSG}}", message["content"]), unsafe_allow_html=True)
-        else:
-            st.write(bot_template.replace("{{MSG}}", message["content"]), unsafe_allow_html=True)
+    # Return the response (this won't be displayed directly, as the UI will rerun and show the updated chat history)
+    return enhanced_response
 
 
 def classify_query(question):
@@ -287,6 +295,14 @@ def get_enhanced_response(question, query_type, paper_text, chat_history):
     
     try:
         response = llm.invoke(prompt)
+        
+        # Track the prompt and response
+        tracker.track('PaperSense', {
+            'functionName': 'get_enhanced_response',
+            'prompt': prompt,
+            'output': response
+        })
+        
         return response
     except Exception as e:
         return f"I encountered an error while processing your question: {str(e)}. Please try again with a different question."
@@ -308,6 +324,8 @@ def check_plagiarism(text):
     
     results = []
     overall_percentage = 0
+    all_prompts = []
+    all_responses = []
     
     for i, section in enumerate(sections):
         prompt = f"""
@@ -328,6 +346,8 @@ def check_plagiarism(text):
         
         try:
             result = llm.invoke(prompt)
+            all_prompts.append(prompt)
+            all_responses.append(result)
             
             # Extract percentage
             percentage_match = re.search(r'PERCENTAGE:\s*(\d+(?:\.\d+)?)', result, re.IGNORECASE)
@@ -370,6 +390,13 @@ def check_plagiarism(text):
             report += f"**Section {result['section']}:** {result['percentage']:.1f}%\n"
             report += f"*{result['reasoning']}*\n\n"
         
+        # Track the prompts and responses
+        tracker.track('PaperSense', {
+            'functionName': 'check_plagiarism',
+            'prompt': str(all_prompts),
+            'output': report
+        })
+        
         return report
     else:
         return "⚠️ **Plagiarism check inconclusive.** Please try again or check the text manually."
@@ -399,6 +426,14 @@ def extract_research_highlights(text):
     
     try:
         result = llm.invoke(prompt)
+        
+        # Track the prompt and response
+        tracker.track('PaperSense', {
+            'functionName': 'extract_research_highlights',
+            'prompt': prompt,
+            'output': result
+        })
+        
         return result
     except Exception as e:
         st.error(f"Error extracting research highlights: {e}")
@@ -437,12 +472,6 @@ def analyze_paper(text):
     - Quote or paraphrase the relevant section from the paper
     - Note whether it's a current implementation or future direction
     
-    ## 5. Citation Analysis
-    Extract and analyze key references mentioned in the paper, identifying:
-    - Which specific prior works the authors build upon
-    - How this paper specifically advances beyond those works
-    - Any competing or alternative approaches mentioned
-    
     For every claim you make, ensure it is directly supported by text in the paper. Use specific quotes and page/section references where possible. If information for any section is not available in the paper, clearly state "The paper does not provide sufficient information about [topic]" rather than making assumptions.
     
     Paper text: {text[:6000]}...
@@ -450,6 +479,14 @@ def analyze_paper(text):
     
     try:
         result = llm.invoke(prompt)
+        
+        # Track the prompt and response
+        tracker.track('PaperSense', {
+            'functionName': 'analyze_paper',
+            'prompt': prompt,
+            'output': result
+        })
+        
         return result
     except Exception as e:
         st.error(f"Error analyzing paper: {e}")
@@ -507,6 +544,13 @@ def find_similar_papers(text):
     try:
         # Get title and concepts
         title_result = llm.invoke(title_prompt)
+        
+        # Track the title extraction prompt
+        tracker.track('PaperSense', {
+            'functionName': 'find_similar_papers_extract_title',
+            'prompt': title_prompt,
+            'output': title_result
+        })
         
         # Extract title and concepts
         title_match = re.search(r'TITLE:\s*(.*)', title_result, re.IGNORECASE)
@@ -570,6 +614,8 @@ def find_similar_papers(text):
         
         # Use LLM to generate concise summaries if we have paper snippets
         summarized_papers = []
+        summary_prompts = []
+        summary_results = []
         
         for i, paper in enumerate(papers[:10]):  # Process up to 10 papers
             paper_title = paper.get('title', 'No title available')
@@ -588,6 +634,9 @@ def find_similar_papers(text):
                 
                 try:
                     concise_description = llm.invoke(summary_prompt).strip()
+                    summary_prompts.append(summary_prompt)
+                    summary_results.append(concise_description)
+                    
                     # Keep it short - take first sentence only
                     if "." in concise_description:
                         concise_description = concise_description.split(".")[0] + "."
@@ -601,6 +650,14 @@ def find_similar_papers(text):
                     "description": concise_description,
                     "link": paper.get('link', '#')
                 })
+        
+        # Track the summary prompts and results
+        if summary_prompts:
+            tracker.track('PaperSense', {
+                'functionName': 'find_similar_papers_generate_summaries',
+                'prompt': str(summary_prompts),
+                'output': str(summary_results)
+            })
         
         # Ensure we have at least 5 papers
         if len(summarized_papers) < 5:
@@ -626,6 +683,14 @@ def find_similar_papers(text):
             
             try:
                 generated_papers = llm.invoke(generation_prompt)
+                
+                # Track the generation prompt and result
+                tracker.track('PaperSense', {
+                    'functionName': 'find_similar_papers_generate_additional',
+                    'prompt': generation_prompt,
+                    'output': generated_papers
+                })
+                
                 # Parse generated papers
                 paper_blocks = re.split(r'TITLE:', generated_papers)
                 for block in paper_blocks:
@@ -665,6 +730,13 @@ def find_similar_papers(text):
         if not summarized_papers:
             output += "No similar papers found. Try processing a different paper or modifying the search criteria."
         
+        # Track the final output
+        tracker.track('PaperSense', {
+            'functionName': 'find_similar_papers_final',
+            'prompt': f"Title: {title}, Concepts: {concepts}",
+            'output': output
+        })
+        
         return output
         
     except Exception as e:
@@ -672,7 +744,7 @@ def find_similar_papers(text):
         return "Unable to find similar papers. Please try again."
 
 def generate_paper_flowchart(text):
-    """Generate a structured flowchart of the paper's methodology and structure"""
+    """Generate a structured flowchart of the paper's methodology and structure using QuickChart API"""
     llm = Together(
         model="mistralai/Mixtral-8x7B-Instruct-v0.1",
         temperature=0.2,
@@ -706,18 +778,14 @@ def generate_paper_flowchart(text):
         # Get the paper structure from the LLM
         paper_structure = llm.invoke(prompt)
         
-        # Create a Graphviz Digraph
-        dot = graphviz.Digraph(format='png')
-        # Increase overall graph size and DPI for better visibility
-        dot.attr('graph', rankdir='TB', size='14,11', dpi='400')
-        # Increase node size and font size for better readability
-        dot.attr('node', shape='box', style='filled,rounded', 
-                 fillcolor='lightblue', fontname='Arial', fontsize='16',
-                 margin='0.3,0.2', width='3', height='1.4')
-        # Increase edge font size
-        dot.attr('edge', fontname='Arial', fontsize='12', arrowsize='0.9')
+        # Track the prompt and response
+        tracker.track('PaperSense', {
+            'functionName': 'generate_paper_flowchart',
+            'prompt': prompt,
+            'output': paper_structure
+        })
         
-        # Parse the structure and build the graph
+        # Parse the structure to extract components and connections
         components = {}
         connections = []
         
@@ -757,63 +825,151 @@ def generate_paper_flowchart(text):
                 ("Results", "Conclusion")
             ]
         
-        # Add nodes to the graph
-        for component, info in components.items():
-            label = f"{component}\n\n{info['description']}"
-            dot.node(component, label=label)
+        # Create DOT language representation
+        dot = "digraph G {\n"
+        # Graph attributes
+        dot += "  rankdir=TB;\n"
+        dot += "  node [shape=box, style=filled, fillcolor=lightblue, fontname=Arial, fontsize=16];\n"
+        dot += "  edge [fontname=Arial, fontsize=12, arrowsize=0.9];\n\n"
         
-        # Add edges to the graph
+        # Add nodes
+        for component, info in components.items():
+            # Escape special characters in labels
+            safe_component = component.replace('"', '\\"')
+            safe_description = info['description'].replace('"', '\\"')
+            dot += f'  "{safe_component}" [label="{safe_component}\\n\\n{safe_description}"];\n'
+        
+        # Add edges
         for source, target in connections:
             if source in components and target in components:
-                dot.edge(source, target)
+                safe_source = source.replace('"', '\\"')
+                safe_target = target.replace('"', '\\"')
+                dot += f'  "{safe_source}" -> "{safe_target}";\n'
         
-        # Render the graph to a file and return the file path
-        flowchart_path = dot.render(filename='paper_flowchart', cleanup=True)
-        return flowchart_path
+        dot += "}"
+        
+        # Create QuickChart API URL
+        encoded_dot = urllib.parse.quote(dot)
+        quickchart_url = f"https://quickchart.io/chart?cht=gv&chl={encoded_dot}&layout=dot"
+        
+        # Track the generated DOT and URL
+        tracker.track('PaperSense', {
+            'functionName': 'generate_paper_flowchart_diagram',
+            'prompt': paper_structure,
+            'output': quickchart_url
+        })
+        
+        # Return the URL directly instead of downloading the image
+        return quickchart_url
+            
     except Exception as e:
         st.error(f"Error generating flowchart: {e}")
         return None
 
 def generate_citation_insights(text):
-    """Generate deep-dive citation insights from the paper"""
+    """Generate concise and relevant citation insights from the paper"""
     llm = Together(
         model="mistralai/Mixtral-8x7B-Instruct-v0.1",
         temperature=0.2,
         # The API key is loaded from environment variable by the Together class
     )
     
-    prompt = f"""
-    Analyze the citations in this research paper and provide a comprehensive citation analysis with the following sections:
-
-    ## 1. Key References Categorization
-    Identify and categorize important references as:
-    - **Supporting Work**: Research that validates or supports this study's findings
-    - **Contradictory Work**: Studies that present different or opposing conclusions
-    - **Foundational Work**: Key prior research this paper builds upon
+    # First, extract the most important citations
+    citation_extraction_prompt = f"""
+    Extract the 10 most important citations from this research paper.
+    For each citation, provide:
+    1. The citation text or reference number as it appears in the paper
+    2. The authors' names (first author is sufficient if there are many)
+    3. The publication year
+    4. The paper title (if available)
+    5. The exact context where this citation is used in the paper
     
-    For each reference, provide the citation, a brief summary of its contribution, and how it relates to the current paper.
+    Format as:
+    CITATION: [citation]
+    AUTHORS: [authors]
+    YEAR: [year]
+    TITLE: [title]
+    CONTEXT: [sentence/paragraph where citation appears]
     
-    ## 2. Citation Network Analysis
-    - **Backward Citations**: What are the most significant papers that this research cites?
-    - **Potential Forward Citations**: Which research areas or specific papers might cite this work in the future?
-    - **Research Clusters**: Identify any clusters or schools of thought within the citations
-    
-    ## 3. Citation Patterns & Potential Biases
-    - Analyze if there are excessive self-citations or institutional bias
-    - Identify any notable geographic or temporal patterns in the citations
-    - Detect any potentially significant omissions in the literature review
-    
-    ## 4. Research Impact & Context
-    - How does this paper build on or diverge from existing literature?
-    - What is the potential academic and industry impact based on citation analysis?
-    - Where does this research fit within broader scholarly trends?
-    
+    Only include citations you can clearly identify from the text.
     Paper text: {text[:4000]}...
     """
     
     try:
-        result = llm.invoke(prompt)
-        return result
+        # First, extract all citations
+        citation_extraction_result = llm.invoke(citation_extraction_prompt)
+        
+        # Track the extraction prompt and result
+        tracker.track('PaperSense', {
+            'functionName': 'generate_citation_insights_extraction',
+            'prompt': citation_extraction_prompt,
+            'output': citation_extraction_result
+        })
+        
+        # Now create a more focused, concise analysis
+        analysis_prompt = f"""
+        You are a research analyst creating a CONCISE citation report. Based on the extracted citations below, create a brief but insightful citation analysis.
+        
+        {citation_extraction_result}
+        
+        Create a BRIEF citation report with these sections (limit to 2-3 points per section):
+
+        ## Key Foundational Works (max 100 words)
+        Identify 2-3 foundational papers this research builds upon. For each, explain exactly how they influenced this paper.
+
+        ## Citation Patterns (max 70 words)
+        Identify concrete patterns like recency bias, geographical focus, or self-citations. Use percentages or specific numbers.
+
+        ## Research Gaps (max 70 words)
+        Identify 1-2 specific research gaps this paper addresses, based on the citations.
+
+        Use ONLY specific examples you can verify from the citations. Keep your total response under 300 words.
+        Avoid vague statements like "many papers" or "several researchers" - always use specific names and numbers.
+        If you cannot find enough information for a section, write "Insufficient citation information" for that section.
+        
+        Original paper text: {text[:1000]}...
+        """
+        
+        # Get the citation insights
+        citation_insights = llm.invoke(analysis_prompt)
+        
+        # Track the analysis prompt and result
+        tracker.track('PaperSense', {
+            'functionName': 'generate_citation_insights_analysis',
+            'prompt': analysis_prompt,
+            'output': citation_insights
+        })
+        
+        # If the result is too short or generic, try an alternative approach
+        if len(citation_insights.split()) < 150 or "insufficient citation information" in citation_insights.lower():
+            # Fallback to a direct citation analysis
+            fallback_prompt = f"""
+            Analyze the most significant citations in this paper. Focus on SPECIFICITY and BREVITY.
+            
+            For each of the 5 most important citations you can find:
+            1. PAPER: Authors (year). Title.
+            2. CONTRIBUTION: One sentence on what this cited work contributed to the field
+            3. USAGE: One sentence on exactly how the current paper uses this citation
+            
+            Format as a bullet list with the 5 most important citations.
+            
+            Add a brief conclusion (2-3 sentences) summarizing what these citations reveal about the paper's foundation.
+            
+            Total response should be under 300 words and ONLY include citations you can specifically identify in the text.
+            
+            Paper text: {text[:5000]}...
+            """
+            
+            citation_insights = llm.invoke(fallback_prompt)
+            
+            # Track the fallback prompt and result
+            tracker.track('PaperSense', {
+                'functionName': 'generate_citation_insights_fallback',
+                'prompt': fallback_prompt,
+                'output': citation_insights
+            })
+        
+        return citation_insights
     except Exception as e:
         st.error(f"Error generating citation insights: {e}")
         return "Unable to generate citation insights. Please try again."
@@ -888,6 +1044,13 @@ def extract_startup_insights(text):
         # Get the startup roadmap content with direct error handling
         startup_roadmap = llm.invoke(prompt)
         
+        # Track the prompt and response
+        tracker.track('PaperSense', {
+            'functionName': 'extract_startup_insights',
+            'prompt': prompt,
+            'output': startup_roadmap
+        })
+        
         # Ensure we have valid content
         if not startup_roadmap or len(startup_roadmap.strip()) < 100:
             return "The generated startup insights were too short or empty. Please try again."
@@ -900,6 +1063,61 @@ def extract_startup_insights(text):
         error_details = str(e)
         st.error(f"Error extracting startup insights: {error_details}")
         return f"Unable to extract startup insights. Error: {error_details}"
+
+def generate_what_if_scenarios(text):
+    """Generate 'What-If' scenarios by modifying key parameters, models, or techniques"""
+    llm = Together(
+        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
+        temperature=0.3,
+        # The API key is loaded from environment variable by the Together class
+    )
+    
+    prompt = f"""
+    You are an AI research methodology expert. Analyze the given research paper's methodology and generate insightful 'What-If' scenarios.
+    
+    For the provided research paper, create a structured analysis that:
+    
+    ## 1. Modified Parameters or Models
+    - Identify 3-4 specific components of the current methodology that could be modified
+    - For each component, suggest a concrete alternative approach, model, or technique
+    - Explain why this alternative might be worth exploring
+    - Be specific about exactly what parameters would change (e.g., "Increase learning rate from 0.001 to 0.01")
+    
+    ## 2. Predicted Outcomes
+    - For each modification, estimate the potential impact on:
+      * Performance metrics (accuracy, precision, recall, F1-score)
+      * Computational requirements (training time, inference speed)
+      * Model complexity and size
+      * Generalizability to new data
+    - Provide numerical estimates where possible (e.g., "Accuracy may improve by 2-5%")
+    
+    ## 3. Comparative Analysis
+    - Present a markdown-formatted comparison table for each scenario showing:
+      * Original approach vs. Modified approach
+      * Expected metrics for both approaches
+      * Trade-offs in terms of complexity, performance, and resources
+    - Highlight the key advantages and limitations of each modification
+    
+    Base your analysis strictly on the methodology described in the paper. Be concrete and specific rather than generic.
+    Use a clear structure with headers, bullet points, and tables to make the analysis easy to read.
+    
+    Paper text: {text[:6000]}...
+    """
+    
+    try:
+        what_if_scenarios = llm.invoke(prompt)
+        
+        # Track the prompt and response
+        tracker.track('PaperSense', {
+            'functionName': 'generate_what_if_scenarios',
+            'prompt': prompt,
+            'output': what_if_scenarios
+        })
+        
+        return what_if_scenarios
+    except Exception as e:
+        st.error(f"Error generating what-if scenarios: {e}")
+        return "Unable to generate what-if scenarios. Please try again."
 
 def main():
     """Main function for the app"""
@@ -934,6 +1152,7 @@ def main():
             type=["pdf"]
         )
         
+        st.markdown("*Click 'Process Papers' after uploading to analyze your documents.*")
         if st.button("Process Papers"):
             if pdf_docs:
                 with st.spinner("Processing papers..."):
@@ -952,6 +1171,13 @@ def main():
                     # Clear chat history for new papers
                     st.session_state.chat_history = []
                     
+                    # Reset last query to ensure fresh interaction
+                    if 'last_query' in st.session_state:
+                        del st.session_state.last_query
+                    
+                    # Reset user input
+                    st.session_state.user_input = ""
+                    
                     # Mark as processed
                     st.session_state.processed = True
                     
@@ -962,26 +1188,65 @@ def main():
     # Main content area - show research chat only if papers were processed
     if st.session_state.get('processed', False):
         st.header("Interactive Research Paper Analysis")
-        research_query = st.text_input("Ask a question about the paper:", placeholder="e.g., What is the main contribution of this paper?")
+        st.caption("Ask questions about the paper to get instant, contextually relevant answers.")
         
-        if research_query:
-            with st.spinner("Analyzing paper and generating response..."):
-                handle_research_query(research_query)
+        # Add a container to isolate the chat interface
+        chat_container = st.container()
+        
+        # Initialize input value in session state if it doesn't exist
+        if "user_input" not in st.session_state:
+            st.session_state.user_input = ""
+            
+        # Function to handle input submission
+        def submit_query():
+            if st.session_state.user_input:
+                # Store current input
+                current_query = st.session_state.user_input
+                # Clear the input
+                st.session_state.user_input = ""
+                # Save as last query to prevent reprocessing
+                st.session_state.last_query = current_query
+                # Process the query
+                with st.spinner("Analyzing paper and generating response..."):
+                    handle_research_query(current_query)
+                    # Rerun to update UI with new chat history
+                    st.experimental_rerun()
+        
+        with chat_container:
+            # Display existing chat history first (only once)
+            for i, message in enumerate(st.session_state.chat_history):
+                if message["role"] == "user":
+                    st.write(user_template.replace("{{MSG}}", message["content"]), unsafe_allow_html=True)
+                else:
+                    st.write(bot_template.replace("{{MSG}}", message["content"]), unsafe_allow_html=True)
+            
+            # Create input box for new queries with callback for changes
+            st.text_input(
+                "Ask a question about the paper:", 
+                placeholder="e.g., What is the main contribution of this paper?", 
+                key="user_input",
+                on_change=submit_query
+            )
+            
+            st.markdown("*Type your question above and press Enter to get AI-powered insights from the paper.*")
         
         # Show tabs for other analysis features
-        tab1, tab2, tab3, tab4, tab5 = st.tabs([
+        tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
             "📑 Paper Analysis", 
             "📊 Research Flowchart",
             "🔍 Research Highlights",
             "📚 Similar Papers",
-            "💼 Startup Insights"
+            "💼 Startup Insights",
+            "🧪 What-If Scenarios"
         ])
         
         with tab1:
             st.header("Paper Analysis")
+            st.caption("Get comprehensive insights into the paper's methodology, results, and key contributions.")
             
             # Detailed paper analysis
             st.subheader("Detailed Paper Analysis")
+            st.markdown("*Extract the core concepts, methodology, and findings with AI-powered analysis.*")
             if st.button("Analyze Paper"):
                 with st.spinner("Analyzing paper..."):
                     analysis_report = analyze_paper(st.session_state.pdf_text)
@@ -989,6 +1254,7 @@ def main():
             
             # Plagiarism check
             st.subheader("Plagiarism Check")
+            st.markdown("*Evaluate the originality of the paper and identify potential plagiarism concerns.*")
             if st.button("Check for Plagiarism"):
                 with st.spinner("Analyzing for plagiarism..."):
                     plagiarism_report = check_plagiarism(st.session_state.pdf_text)
@@ -996,10 +1262,32 @@ def main():
                     
             # Citation insights
             st.subheader("Citation Insights")
-            if st.button("Generate Citation Insights"):
+            st.markdown("*Explore key references and understand how they support the paper's arguments.*")
+            if st.button("Generate Citation Insights", key="citation_insights_btn"):
+                # Create a placeholder for showing progress and results
+                citation_placeholder = st.empty()
+                
                 with st.spinner("Analyzing citation network and impact..."):
-                    citation_insights = generate_citation_insights(st.session_state.pdf_text)
-                    st.markdown(citation_insights)
+                    citation_placeholder.info("Extracting and analyzing citations... This may take up to a minute.")
+                    
+                    try:
+                        # Get citation insights
+                        citation_insights = generate_citation_insights(st.session_state.pdf_text)
+                        
+                        # Clear the placeholder before showing results
+                        citation_placeholder.empty()
+                        
+                        # Check if we got meaningful content
+                        if citation_insights and len(citation_insights) > 100:
+                            st.success("Citation insights generated successfully!")
+                            st.markdown(citation_insights)
+                        else:
+                            st.error("No valid citation insights could be generated.")
+                            st.warning("Please try again or check if your paper contains citations.")
+                    except Exception as e:
+                        citation_placeholder.empty()
+                        st.error(f"Error generating citation insights: {str(e)}")
+                        st.warning("Please check your internet connection and API key configuration.")
         
         with tab2:
             st.header("Research Paper Flowchart")
@@ -1008,14 +1296,21 @@ def main():
             """)
             if st.button("Generate Paper Flowchart"):
                 with st.spinner("Creating visual representation of paper structure..."):
-                    flowchart_path = generate_paper_flowchart(st.session_state.pdf_text)
-                    if flowchart_path:
-                        st.image(flowchart_path, caption="Paper Structure Flowchart", use_column_width=True)
+                    flowchart_url = generate_paper_flowchart(st.session_state.pdf_text)
+                    if flowchart_url:
+                        st.markdown(f"### Paper Structure Flowchart")
+                        # Display the image directly using HTML for better rendering
+                        st.markdown(f'<img src="{flowchart_url}" alt="Paper Structure Flowchart" width="100%">', unsafe_allow_html=True)
+                        
+                        # Also provide the URL in case the user wants to access it directly
+                        with st.expander("View Flowchart URL"):
+                            st.markdown(f"[Open in new tab]({flowchart_url})")
                     else:
                         st.error("Failed to generate flowchart. Please try again.")
         
         with tab3:
             st.header("Research Highlights")
+            st.markdown("*Quickly grasp the key takeaways and business applications of this research.*")
             if st.button("Extract Research Highlights"):
                 with st.spinner("Analyzing paper for key insights..."):
                     highlights = extract_research_highlights(st.session_state.pdf_text)
@@ -1023,6 +1318,7 @@ def main():
         
         with tab4:
             st.header("Similar Papers")
+            st.markdown("*Find and explore related publications to broaden your understanding of the topic.*")
             if st.button("Find Similar Papers"):
                 with st.spinner("Searching for related research..."):
                     similar_papers = find_similar_papers(st.session_state.pdf_text)
@@ -1048,6 +1344,7 @@ def main():
                 st.write("2. Try refreshing the page if keys were recently added")
                 st.write("3. Check your internet connection")
             
+            st.markdown("*Generate a comprehensive startup roadmap based on the paper's innovations.*")
             startup_insights_button = st.button("Generate Startup Insights")
             
             if startup_insights_button:
@@ -1074,6 +1371,40 @@ def main():
                     except Exception as e:
                         insights_placeholder.empty()
                         st.error(f"Error generating startup insights: {str(e)}")
+                        st.warning("Please check your internet connection and API key configuration.")
+        
+        with tab6:
+            st.header("What-If Methodology Scenarios")
+            st.markdown("""
+            Analyze the research methodology and generate alternative scenarios with modified parameters, 
+            models, or techniques. Compare potential outcomes and trade-offs.
+            """)
+            
+            st.markdown("*See how changing key parameters or methodologies could affect the research outcomes.*")
+            if st.button("Generate What-If Scenarios"):
+                # Create a placeholder for showing progress and results
+                what_if_placeholder = st.empty()
+                
+                with st.spinner("Analyzing methodology and generating alternative scenarios..."):
+                    what_if_placeholder.info("Generating What-If scenarios... This may take up to a minute.")
+                    
+                    try:
+                        # Get what-if scenarios
+                        what_if_scenarios = generate_what_if_scenarios(st.session_state.pdf_text)
+                        
+                        # Clear the placeholder before showing results
+                        what_if_placeholder.empty()
+                        
+                        # Check if we got meaningful content
+                        if what_if_scenarios and len(what_if_scenarios) > 100:
+                            st.success("What-If scenarios generated successfully!")
+                            st.markdown(what_if_scenarios)
+                        else:
+                            st.error("No valid What-If scenarios could be generated.")
+                            st.warning("Please try again with a paper that has a clearer methodology section.")
+                    except Exception as e:
+                        what_if_placeholder.empty()
+                        st.error(f"Error generating What-If scenarios: {str(e)}")
                         st.warning("Please check your internet connection and API key configuration.")
     else:
         st.info("👈 Please upload PDF files and click 'Process Papers' to begin analysis.")
