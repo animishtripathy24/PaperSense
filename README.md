@@ -4,13 +4,13 @@ A comprehensive tool for analyzing academic papers, creating flowcharts, and pro
 
 ## Features
 
-- **PDF Text Extraction**: Extract text from uploaded PDF research papers.
-- **Chat with Paper**: Ask questions about the paper and get context-aware responses.
-- **Plagiarism Check**: Verify that plagiarism is less than 10%.
-- **Flowchart Generation**: Automatically create flowcharts from paper structure.
-- **Research Highlights**: Auto-generate TL;DR with key contributions, novel findings, and applications.
-- **Similar Paper Matching**: Find similar papers using FAISS vector search with TF-IDF embeddings.
-- **Paper Translation**: Translate academic papers into multiple languages.
+- **PDF Text Extraction**: Efficiently extracts text from uploaded PDF research papers using `PyPDF2`.
+- **Interactive Chat with Papers**: Users can ask questions about the paper to receive context-aware responses, enhancing comprehension.
+- **Plagiarism Check**: Uses AI to ensure that plagiarism is less than 10%, assessing originality through detailed analysis.
+- **Flowchart Generation**: Automatically generates visualizations of the paper's structure and methodology utilizing Graphviz.
+- **Research Highlights Extraction**: Summarizes key contributions, novel findings, and practical applications into concise, actionable insights.
+- **Similar Paper Matching**: Utilizes FAISS vector search along with TF-IDF embeddings to identify similar papers based on content analysis.
+- **Paper Translation Support**: Provides functionality for translating academic papers into multiple languages (specific implementation not shown in provided files).
 
 ## Installation
 
@@ -43,30 +43,38 @@ A comprehensive tool for analyzing academic papers, creating flowcharts, and pro
 
 3. Upload a PDF research paper using the file uploader.
 
-4. Use the different tabs to:
-   - View paper analysis and check for plagiarism.
-   - Chat with the paper by asking questions.
-   - Generate visualizations like flowcharts and concept maps.
-   - Extract research highlights.
-   - Find similar papers.
-   - Develop startup insights based on analyses provided.
+4. Use the different tabs to access functionalities such as:
+    - Analyzing paper content.
+    - Checking for plagiarism issues.
+    - Engaging in interactive Q&A with the paper's content.
+    - Visualizing data through flowcharts.
+    - Extracting highlights and finding similar research.
 
 ## Requirements
 
 - Python 3.8+
-- TogetherAI API key
+- TogetherAI API key for language model capabilities
+- SerpAPI Key for similar papers functionality
 - See `requirements.txt` for all Python dependencies.
 
 ## How It Works
 
-The application uses:
-- **LangChain**: For creating a RAG (Retrieval-Augmented Generation) pipeline.
-- **FAISS**: For vector similarity search.
-- **TF-IDF Vectorization**: To create vector representations of text.
-- **TogetherAI Mixtral Model**: For language model capabilities.
-- **Streamlit**: For the web interface.
-- **PyPDF2**: For PDF text extraction.
-- **Graphviz & Plotly**: For visualization generation.
+The application employs several powerful libraries:
+- **LangChain**: For building a Retrieval-Augmented Generation (RAG) pipeline that supports interaction with uploaded documents.
+- **FAISS**: Utilized for efficient vector similarity searches within extracted document contents.
+- **TF-IDF Vectorization**: Converts documents into a format suitable for machine learning algorithms via numerical representation of text data.
+- **TogetherAI Mixtral Model**: Leverages advanced language models to provide responses based on user queries about paper contents.
+- **Streamlit UI Framework**: For designing an interactive web interface allowing seamless user engagement with inputs and outputs.
+
+## Analytics Tracking
+
+The application maintains a detailed log of prompt analytics through `prompt_analytics.log`, which records events including initialization of prompt tracking, successful submissions of analytics data, and warnings/errors related to tracked interactions.
+
+### Log Example:
+```
+2025-03-25 17:39:03,254 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+...
+```
 
 ## License
 
@@ -75,7 +83,7 @@ MIT License (No specific license file found)
 ## Version Information
 
 Version: 1  
-Last Updated: 2025-03-25T12:16:19Z  
+Last Updated: 2025-03-25T12:45:21Z  
 
 ## Release Notes
 
@@ -89,9 +97,9 @@ Last Updated: 2025-03-25T12:16:19Z
 Released on March 25, 2025.
 
 ### Key Files Modified Since Last Update
-- `.gitignore`: Updated to include additional entries for logging files and environment variables management.
-- `app.py`: Modified to enhance functionalities such as chat interactions, file uploads, and processing logic improvements that support new features added in this version.
-- `prompt_analytics.log`: Now logs detailed analytics regarding prompt tracking within application functions dynamically capturing submission data.
-- `requirements.txt`: Updated to ensure all necessary libraries are included for smooth operation of enhanced functionalities in PaperSense. 
+1. `app.py`: Modified to enhance functionalities like chat interactions, file uploads, processing logic improvements supporting new features added in this version including enhanced error handling and logging mechanisms related to prompt analytics captured in `prompt_analytics.log`.
 
-This README provides an organized overview of PaperSense’s functionalities while guiding users through setup and usage processes clearly.
+2. `prompt_analytics.log`: Logs detailed analytics regarding prompt tracking within application functions dynamically capturing submission data that helps improve future iterations through analyzed performance metrics.
+
+
+This README provides an organized overview of PaperSense’s functionalities while guiding users through setup and usage processes clearly while highlighting important aspects discovered during analysis of key files provided.
