@@ -1,169 +1,311 @@
-2025-03-25 17:38:35,046 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:38:40,807 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:38:40,807 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:38:42,837 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:38:42,837 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:38:42,837 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:03,254 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:03,254 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:03,254 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:03,263 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:03,263 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:03,263 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:03,263 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:15,649 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:15,649 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:15,649 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:15,649 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:15,649 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:39:21,408 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:21,408 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:21,408 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:21,408 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:21,408 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:21,693 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:21,693 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:21,693 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:21,693 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:39:21,693 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:55:50,921 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:55:57,556 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:55:57,556 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:55:58,720 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:55:58,720 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:55:58,720 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:56:02,318 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:56:02,318 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:56:02,318 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:56:02,318 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:56:09,823 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:56:09,823 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:56:09,823 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:56:09,823 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:57:03,600 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:57:03,600 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:57:03,600 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:57:03,600 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:57:03,600 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 17:57:14,141 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:57:14,141 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:57:14,141 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:57:14,141 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 17:57:14,141 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:05:44,521 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:44,521 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:44,521 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:44,521 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:50,975 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:50,975 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:50,975 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:52,126 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:52,126 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:52,126 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:05:52,126 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:00,365 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:00,365 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:00,365 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:00,365 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:00,365 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:12,867 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:12,867 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:12,867 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:12,867 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:12,867 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:33,778 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:33,778 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:33,778 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:33,778 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:33,778 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:33,778 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:37,961 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:37,961 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:37,961 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:37,961 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:37,961 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:37,961 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:37,961 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:38,855 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:38,855 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:38,855 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:38,855 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:38,855 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:38,855 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:38,855 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:38,855 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:44,013 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:44,013 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:44,013 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:44,013 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:44,013 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:44,013 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:44,013 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:44,013 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:44,013 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:06:53,953 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:53,953 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:53,953 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:53,953 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:53,953 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:53,953 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:53,953 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:53,953 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:06:53,953 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:07:13,023 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:04,798 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:06,713 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:34,416 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:34,416 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:34,416 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:34,416 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:39,430 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:39,430 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:39,430 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:40,409 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:40,409 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:40,409 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:40,409 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:49,707 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:49,707 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:49,707 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:49,707 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:09:49,707 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
-2025-03-25 18:10:04,818 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:10:04,818 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:10:04,818 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:10:04,818 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-2025-03-25 18:10:04,818 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+2025-03-27 12:42:05,719 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 12:42:12,498 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 12:42:12,498 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 12:42:13,260 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 12:42:13,260 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 12:42:13,260 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 12:43:18,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 12:43:18,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 12:43:18,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 12:43:18,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:08,766 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:14,706 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:14,706 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:15,681 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:15,681 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:15,681 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:21,679 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:21,679 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:21,679 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:04:21,679 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:08,408 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:08,408 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:08,408 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:08,408 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:08,408 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:40,346 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:40,346 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:40,346 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:40,346 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:40,346 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:05:40,346 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:06:11,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:06:11,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:06:11,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:06:11,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:06:11,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:06:11,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:06:11,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:09:56,356 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:09:56,356 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:09:56,356 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:09:56,356 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:01,801 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:01,801 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:01,801 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:03,719 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:03,719 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:03,719 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:03,719 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:08,193 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:08,193 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:08,193 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:08,193 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:10:08,193 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:19,666 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:19,666 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:19,666 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:19,666 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:19,666 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:19,666 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:35,369 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:35,369 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:35,369 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:35,452 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:35,369 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:35,452 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:35,452 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:41,789 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:41,789 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:41,789 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:41,789 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:42,754 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:42,754 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:42,754 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:42,754 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:42,754 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:47,734 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:47,734 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:47,734 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:47,734 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:47,734 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:11:47,734 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:29,751 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:29,751 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:29,751 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:29,751 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:35,063 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:35,063 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:35,063 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:37,280 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:37,280 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:37,280 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:37,280 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:41,563 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:41,563 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:41,563 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:41,563 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:15:41,563 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:35,447 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:35,447 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:35,447 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:35,447 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:35,447 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:35,447 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:35,447 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:35,447 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:35,447 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:43,246 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:43,246 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:43,246 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:43,246 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:44,999 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:44,999 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:44,999 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:44,999 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:44,999 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:49,198 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:49,198 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:49,198 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:49,198 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:49,198 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:18:49,198 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:21,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:29,253 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:29,253 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:29,253 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:29,253 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:29,253 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:33,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:33,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:33,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:33,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:33,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:33,029 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:37,606 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:37,606 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:37,606 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:37,606 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:37,606 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:37,606 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:20:37,606 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:21:24,334 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:21:24,334 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:21:24,334 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:21:24,334 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:21:24,334 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:21:24,334 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:21:24,334 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:21:24,334 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,216 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:24:57,218 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:05,316 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:05,316 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:05,316 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:05,316 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:05,316 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:06,810 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:06,810 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:06,810 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:06,810 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:06,810 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:06,810 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:11,195 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:11,195 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:11,195 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:11,195 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:11,195 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:11,195 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 15:25:11,195 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:46,416 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:51,843 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:51,843 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:52,748 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:52,748 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:52,748 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:58,842 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:58,842 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:58,842 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:04:58,842 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:23,863 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:23,863 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:23,863 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:23,863 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:23,863 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:27,897 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:27,897 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:27,897 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:27,897 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:27,897 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:05:27,897 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,338 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,343 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,344 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,343 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,343 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,344 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,344 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,343 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:08:51,344 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:01,088 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:01,088 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:01,088 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:01,088 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:01,088 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:02,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:02,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:02,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:02,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:02,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:02,340 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:09,271 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:09,271 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:09,271 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:09,271 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:09,271 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:09,271 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:09:09,271 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,673 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,674 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,673 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,674 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,673 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,674 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,673 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,674 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,673 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,674 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:11:52,675 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:04,465 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:04,465 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:04,465 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:04,465 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:04,465 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:04,465 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:05,542 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:05,542 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:05,542 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:05,542 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:05,542 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:05,542 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:05,542 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:10,483 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:10,483 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:10,483 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:10,483 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:10,483 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:10,483 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:10,483 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:12:10,483 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:23,657 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:23,657 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:23,657 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:23,657 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:23,657 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:23,657 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:23,657 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:23,657 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:23,657 - pypeprompts.main - INFO - PromptAnalyticsTracker initialized with project_token
+2025-03-27 16:13:32,240 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+2025-03-27 16:13:32,240 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+2025-03-27 16:13:32,240 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+2025-03-27 16:13:32,240 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+2025-03-27 16:13:32,240 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+2025-03-27 16:13:32,240 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+2025-03-27 16:13:32,240 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+2025-03-27 16:13:32,240 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
+2025-03-27 16:13:32,240 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}

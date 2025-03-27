@@ -13,7 +13,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
-from langchain_together import Together
+from openai import OpenAI
 from htmlTemplates import css, bot_template, user_template
 from langchain.prompts import PromptTemplate
 import requests
@@ -29,13 +29,16 @@ project_token = os.getenv("PROJECT_TOKEN")
 # Initialize the tracker with your project token
 tracker = PromptAnalyticsTracker(project_token=project_token)
 
-# Set TogetherAI API Key from environment variable - access it but don't modify
-together_api_key = os.getenv("TOGETHER_API_KEY")
-if together_api_key:
-    os.environ["TOGETHER_API_KEY"] = together_api_key
-    print("Together AI API key loaded successfully")
+# Set OpenAI API Key from environment variable
+openai_api_key = os.getenv("OPENAI_API_KEY")
+if openai_api_key:
+    os.environ["OPENAI_API_KEY"] = openai_api_key
+    print("OpenAI API key loaded successfully")
 else:
-    print("Warning: Together AI API key not found in .env file")
+    print("Warning: OpenAI API key not found in .env file")
+
+# Initialize the OpenAI client
+client = OpenAI(api_key=openai_api_key)
 
 # Set SerpAPI Key from environment variable
 serpapi_key = os.getenv("SERPAPI_KEY")
@@ -58,6 +61,21 @@ if 'conversation' not in st.session_state:
     st.session_state.conversation = None
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
+
+def openai_completion(prompt, max_tokens=2000, temperature=0.85):
+    """Make an API call to OpenAI using the specified parameters"""
+    print(f"OpenAI API Key: {openai_api_key}")
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=temperature,
+            max_tokens=max_tokens
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        print(f"Error in OpenAI API call: {str(e)}")
+        return f"Error: {str(e)}"
 
 def get_pdf_text(pdf_docs):
     text = ""
@@ -140,11 +158,22 @@ def get_vectorstore(text_chunks):
 
 def get_conversation_chain(vectorstore):
     """Get the conversation chain for the chatbot"""
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0.3,
-        # The API key is loaded from environment variable by the Together class
-    )
+    # Create a wrapper for OpenAI that conforms to LangChain's LLM interface
+    class OpenAIWrapper:
+        def __init__(self, api_key):
+            self.client = OpenAI(api_key=api_key)
+            
+        def invoke(self, prompt):
+            response = self.client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.85,
+                max_tokens=2000
+            )
+            return response.choices[0].message.content
+    
+    # Create the wrapper
+    llm = OpenAIWrapper(openai_api_key)
     
     retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
     
@@ -229,12 +258,6 @@ def classify_query(question):
 
 def get_enhanced_response(question, query_type, paper_text, chat_history):
     """Get an enhanced response based on the query type"""
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0.3,
-        # The API key is loaded from environment variable by the Together class
-    )
-    
     if query_type == "citation":
         prompt = f"""
         You are PaperSense, an AI research assistant specialized in analyzing academic papers.
@@ -294,7 +317,7 @@ def get_enhanced_response(question, query_type, paper_text, chat_history):
         """
     
     try:
-        response = llm.invoke(prompt)
+        response = openai_completion(prompt)
         
         # Track the prompt and response
         tracker.track('PaperSense', {
@@ -310,12 +333,6 @@ def get_enhanced_response(question, query_type, paper_text, chat_history):
 
 def check_plagiarism(text):
     """Check for plagiarism in the text using AI"""
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0,
-        # The API key is loaded from environment variable by the Together class
-    )
-    
     # Divide text into sections for more comprehensive analysis
     sections = []
     chunk_size = 1500
@@ -345,7 +362,7 @@ def check_plagiarism(text):
         """
         
         try:
-            result = llm.invoke(prompt)
+            result = openai_completion(prompt, temperature=0.0)
             all_prompts.append(prompt)
             all_responses.append(result)
             
@@ -403,12 +420,6 @@ def check_plagiarism(text):
 
 def extract_research_highlights(text):
     """Extract key research highlights from the paper with a business focus"""
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0.2,
-        # The API key is loaded from environment variable by the Together class
-    )
-    
     prompt = f"""
     Analyze the given research paper and extract key insights that would be valuable for startups. 
     Structure the highlights to include:
@@ -425,7 +436,7 @@ def extract_research_highlights(text):
     """
     
     try:
-        result = llm.invoke(prompt)
+        result = openai_completion(prompt, temperature=0.2)
         
         # Track the prompt and response
         tracker.track('PaperSense', {
@@ -441,11 +452,7 @@ def extract_research_highlights(text):
 
 def analyze_paper(text):
     """Analyze the paper with a comprehensive structured approach"""
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0.2,
-        # The API key is loaded from environment variable by the Together class
-    )
+    print("OpenAI API Key:", "*" * len(openai_api_key) if openai_api_key else "None")
     
     prompt = f"""
     Analyze the given research paper and generate a highly specific, accurate analysis that strictly draws from information in the paper. Do not make general claims or assumptions not directly supported by the text.
@@ -478,14 +485,16 @@ def analyze_paper(text):
     """
     
     try:
-        result = llm.invoke(prompt)
-        
-        # Track the prompt and response
-        tracker.track('PaperSense', {
-            'functionName': 'analyze_paper',
-            'prompt': prompt,
-            'output': result
-        })
+        print("Analyzing paper...")
+        result = openai_completion(prompt, temperature=0.2)
+        print("Paper analyzed.")
+
+        # # Track the prompt and response
+        # tracker.track('PaperSense', {
+        #     'functionName': 'analyze_paper',
+        #     'prompt': prompt,
+        #     'output': result
+        # })
         
         return result
     except Exception as e:
@@ -494,12 +503,6 @@ def analyze_paper(text):
 
 def analyze_citations(text):
     """Analyze citations in the research paper"""
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0.2,
-        # The API key is loaded from environment variable by the Together class
-    )
-    
     prompt = f"""
     Analyze the citations in this research paper. Identify the most influential references and categorize them as:
     1. Supporting Evidence
@@ -512,7 +515,7 @@ def analyze_citations(text):
     """
     
     try:
-        result = llm.invoke(prompt)
+        result = openai_completion(prompt, temperature=0.2)
         return result
     except Exception as e:
         st.error(f"Error analyzing citations: {e}")
@@ -524,12 +527,6 @@ def find_similar_papers(text):
     serpapi_key = os.getenv("SERPAPI_KEY")
     if not serpapi_key:
         return "Error: SerpAPI key not found. Please add your SerpAPI key to the .env file."
-    
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0.3,
-        # The API key is loaded from environment variable by the Together class
-    )
     
     # First, extract the title and key concepts from the paper
     title_prompt = f"""
@@ -543,7 +540,7 @@ def find_similar_papers(text):
     
     try:
         # Get title and concepts
-        title_result = llm.invoke(title_prompt)
+        title_result = openai_completion(title_prompt, temperature=0.3)
         
         # Track the title extraction prompt
         tracker.track('PaperSense', {
@@ -570,7 +567,7 @@ def find_similar_papers(text):
             "engine": "google_scholar",
             "q": search_query,
             "api_key": serpapi_key,  # Use the loaded API key
-            "num": 10  # Get top 10 results to ensure at least 5 are displayed
+            "num": 6  # Get top 10 results to ensure at least 5 are displayed
         })
         
         # Perform the search
@@ -633,7 +630,7 @@ def find_similar_papers(text):
                 """
                 
                 try:
-                    concise_description = llm.invoke(summary_prompt).strip()
+                    concise_description = openai_completion(summary_prompt, temperature=0.3).strip()
                     summary_prompts.append(summary_prompt)
                     summary_results.append(concise_description)
                     
@@ -682,7 +679,7 @@ def find_similar_papers(text):
             """
             
             try:
-                generated_papers = llm.invoke(generation_prompt)
+                generated_papers = openai_completion(generation_prompt, temperature=0.3)
                 
                 # Track the generation prompt and result
                 tracker.track('PaperSense', {
@@ -745,12 +742,6 @@ def find_similar_papers(text):
 
 def generate_paper_flowchart(text):
     """Generate a structured flowchart of the paper's methodology and structure using QuickChart API"""
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0.2,
-        # The API key is loaded from environment variable by the Together class
-    )
-    
     prompt = f"""
     Analyze the provided research paper and identify its logical structure and methodology.
     Extract the following components and their relationships:
@@ -776,7 +767,7 @@ def generate_paper_flowchart(text):
     
     try:
         # Get the paper structure from the LLM
-        paper_structure = llm.invoke(prompt)
+        paper_structure = openai_completion(prompt, temperature=0.2)
         
         # Track the prompt and response
         tracker.track('PaperSense', {
@@ -868,12 +859,6 @@ def generate_paper_flowchart(text):
 
 def generate_citation_insights(text):
     """Generate concise and relevant citation insights from the paper"""
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0.2,
-        # The API key is loaded from environment variable by the Together class
-    )
-    
     # First, extract the most important citations
     citation_extraction_prompt = f"""
     Extract the 10 most important citations from this research paper.
@@ -897,7 +882,7 @@ def generate_citation_insights(text):
     
     try:
         # First, extract all citations
-        citation_extraction_result = llm.invoke(citation_extraction_prompt)
+        citation_extraction_result = openai_completion(citation_extraction_prompt, temperature=0.2)
         
         # Track the extraction prompt and result
         tracker.track('PaperSense', {
@@ -931,7 +916,7 @@ def generate_citation_insights(text):
         """
         
         # Get the citation insights
-        citation_insights = llm.invoke(analysis_prompt)
+        citation_insights = openai_completion(analysis_prompt, temperature=0.2)
         
         # Track the analysis prompt and result
         tracker.track('PaperSense', {
@@ -960,7 +945,7 @@ def generate_citation_insights(text):
             Paper text: {text[:5000]}...
             """
             
-            citation_insights = llm.invoke(fallback_prompt)
+            citation_insights = openai_completion(fallback_prompt, temperature=0.2)
             
             # Track the fallback prompt and result
             tracker.track('PaperSense', {
@@ -977,12 +962,6 @@ def generate_citation_insights(text):
 def extract_startup_insights(text):
     """Extract startup-focused insights from the research paper"""
     try:
-        # Initialize the LLM with explicit error handling
-        llm = Together(
-            model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-            temperature=0.3,
-        )
-        
         # Generate the comprehensive startup roadmap in a single prompt
         prompt = f"""
         You are an AI startup strategist specializing in transforming research into real-world businesses.
@@ -1042,7 +1021,7 @@ def extract_startup_insights(text):
         """
         
         # Get the startup roadmap content with direct error handling
-        startup_roadmap = llm.invoke(prompt)
+        startup_roadmap = openai_completion(prompt, temperature=0.3)
         
         # Track the prompt and response
         tracker.track('PaperSense', {
@@ -1066,12 +1045,6 @@ def extract_startup_insights(text):
 
 def generate_what_if_scenarios(text):
     """Generate 'What-If' scenarios by modifying key parameters, models, or techniques"""
-    llm = Together(
-        model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-        temperature=0.3,
-        # The API key is loaded from environment variable by the Together class
-    )
-    
     prompt = f"""
     You are an AI research methodology expert. Analyze the given research paper's methodology and generate insightful 'What-If' scenarios.
     
@@ -1105,7 +1078,7 @@ def generate_what_if_scenarios(text):
     """
     
     try:
-        what_if_scenarios = llm.invoke(prompt)
+        what_if_scenarios = openai_completion(prompt, temperature=0.3)
         
         # Track the prompt and response
         tracker.track('PaperSense', {
@@ -1333,14 +1306,14 @@ def main():
             # Add debug information in an expander
             with st.expander("Debug Information"):
                 st.write("API Key Status:")
-                together_key = os.getenv("TOGETHER_API_KEY")
-                if together_key:
-                    st.write("✅ Together AI API key found")
+                openai_key = os.getenv("OPENAI_API_KEY")
+                if openai_key:
+                    st.write("✅ OpenAI API key found")
                 else:
-                    st.write("❌ Together AI API key missing - Please add it to the .env file")
+                    st.write("❌ OpenAI API key missing - Please add it to the .env file")
                 
                 st.write("\nTo resolve issues:")
-                st.write("1. Ensure your Together AI API key is added to the .env file")
+                st.write("1. Ensure your OpenAI API key is added to the .env file")
                 st.write("2. Try refreshing the page if keys were recently added")
                 st.write("3. Check your internet connection")
             
