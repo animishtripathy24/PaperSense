@@ -83,7 +83,7 @@ MIT License (No specific license file found)
 ## Version Information
 
 Version: 1  
-Last Updated: 2025-03-25T12:45:21Z  
+Last Updated: 2025-03-27T10:52:02Z  
 
 ## Release Notes
 
@@ -97,9 +97,6 @@ Last Updated: 2025-03-25T12:45:21Z
 Released on March 25, 2025.
 
 ### Key Files Modified Since Last Update
-1. `app.py`: Modified to enhance functionalities like chat interactions, file uploads, processing logic improvements supporting new features added in this version including enhanced error handling and logging mechanisms related to prompt analytics captured in `prompt_analytics.log`.
+1. `app.py`: Revised processing logic supporting new features added in this version including enhanced error handling and logging mechanisms related to prompt analytics captured in `prompt_analytics.log`.
 
-2. `prompt_analytics.log`: Logs detailed analytics regarding prompt tracking within application functions dynamically capturing submission data that helps improve future iterations through analyzed performance metrics.
-
-
-This README provides an organized overview of PaperSense’s functionalities while guiding users through setup and usage processes clearly while highlighting important aspects discovered during analysis of key files provided.
+2. `prompt_analytics.log`: Updated to dynamically capture submission data that helps improve future iterations through analyzed performance metrics.
