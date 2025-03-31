@@ -43,7 +43,7 @@ A comprehensive tool for analyzing academic papers, creating flowcharts, and pro
 
 3. Upload a PDF research paper using the file uploader.
 
-4. Use the different tabs to access functionalities such as:
+4. Use different tabs to access functionalities such as:
     - Analyzing paper content.
     - Checking for plagiarism issues.
     - Engaging in interactive Q&A with the paper's content.
@@ -83,7 +83,7 @@ MIT License (No specific license file found)
 ## Version Information
 
 Version: 1  
-Last Updated: 2025-03-27T10:52:02Z  
+Last Updated: 2025-03-31T13:47:57Z  
 
 ## Release Notes
 
@@ -94,9 +94,11 @@ Last Updated: 2025-03-27T10:52:02Z
 - Optimized text extraction from PDFs for better accuracy.
 
 ### Release Date 
-Released on March 25, 2025.
+Released on March 27, 2025.
 
 ### Key Files Modified Since Last Update
 1. `app.py`: Revised processing logic supporting new features added in this version including enhanced error handling and logging mechanisms related to prompt analytics captured in `prompt_analytics.log`.
 
 2. `prompt_analytics.log`: Updated to dynamically capture submission data that helps improve future iterations through analyzed performance metrics.
+
+3. `__pycache__/htmlTemplates.cpython-310.pyc`: Compiled template files are updated reflecting recent modifications in HTML templates used by the application.
