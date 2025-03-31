@@ -20,6 +20,9 @@ import requests
 from serpapi import GoogleSearch
 import urllib.parse
 from pypeprompts import PromptAnalyticsTracker
+from langchain.llms.base import LLM
+from langchain.callbacks.manager import CallbackManagerForLLMRun
+from typing import Any, List, Mapping, Optional
 
 # Load environment variables
 load_dotenv()
@@ -159,18 +162,36 @@ def get_vectorstore(text_chunks):
 def get_conversation_chain(vectorstore):
     """Get the conversation chain for the chatbot"""
     # Create a wrapper for OpenAI that conforms to LangChain's LLM interface
-    class OpenAIWrapper:
+    class OpenAIWrapper(LLM):
+        client: Any
+        
         def __init__(self, api_key):
+            super().__init__()
             self.client = OpenAI(api_key=api_key)
             
-        def invoke(self, prompt):
+        @property
+        def _llm_type(self) -> str:
+            return "custom_openai_wrapper"
+        
+        def _call(
+            self,
+            prompt: str,
+            stop: Optional[List[str]] = None,
+            run_manager: Optional[CallbackManagerForLLMRun] = None,
+            **kwargs: Any,
+        ) -> str:
             response = self.client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.85,
-                max_tokens=2000
+                max_tokens=2000,
+                stop=stop
             )
             return response.choices[0].message.content
+            
+        @property
+        def _identifying_params(self) -> Mapping[str, Any]:
+            return {"model": "gpt-4o-mini"}
     
     # Create the wrapper
     llm = OpenAIWrapper(openai_api_key)
@@ -211,7 +232,17 @@ def handle_research_query(user_question):
     # Initialize vectorstore and get conversation chain if needed
     if "vectorstore" in st.session_state and st.session_state.vectorstore:
         if "conversation" not in st.session_state or st.session_state.conversation is None:
-            st.session_state.conversation = get_conversation_chain(st.session_state.vectorstore)
+            try:
+                st.session_state.conversation = get_conversation_chain(st.session_state.vectorstore)
+            except Exception as e:
+                st.error(f"Error initializing conversation chain: {e}")
+                # Fallback to a simpler approach without using the conversation chain
+                enhanced_response = get_enhanced_response(
+                    user_question, "contextual", st.session_state.pdf_text, []
+                )
+                st.session_state.chat_history.append({"role": "user", "content": user_question})
+                st.session_state.chat_history.append({"role": "assistant", "content": enhanced_response})
+                return enhanced_response
     
     # Get current chat history from session state
     if "chat_history" not in st.session_state:
@@ -230,8 +261,23 @@ def handle_research_query(user_question):
     # Classify the type of question to determine the best approach
     query_type = classify_query(user_question)
     
-    # Apply query-specific prompt enhancement
-    enhanced_response = get_enhanced_response(user_question, query_type, st.session_state.pdf_text, chat_history_tuples)
+    try:
+        if st.session_state.conversation:
+            # Use the conversation chain for retrieval-based QA
+            response = st.session_state.conversation(
+                {"question": user_question, "chat_history": chat_history_tuples}
+            )
+            enhanced_response = response.get("answer", "I couldn't find a relevant answer in the paper.")
+        else:
+            # Fallback to direct enhanced response if conversation chain fails
+            enhanced_response = get_enhanced_response(
+                user_question, query_type, st.session_state.pdf_text, chat_history_tuples
+            )
+    except Exception as e:
+        st.error(f"Error processing query: {e}")
+        enhanced_response = get_enhanced_response(
+            user_question, query_type, st.session_state.pdf_text, chat_history_tuples
+        )
     
     # Add new message pair to the chat history
     st.session_state.chat_history.append({"role": "user", "content": user_question})
@@ -1182,8 +1228,6 @@ def main():
                 # Process the query
                 with st.spinner("Analyzing paper and generating response..."):
                     handle_research_query(current_query)
-                    # Rerun to update UI with new chat history
-                    st.experimental_rerun()
         
         with chat_container:
             # Display existing chat history first (only once)
