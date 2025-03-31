@@ -1,23 +1,39 @@
 # PaperSense
 
-A comprehensive tool for analyzing academic papers, creating flowcharts, and providing deep-dive insights using LangChain and RAG pipeline.
+Your AI-Powered Research Companion that transforms complex academic papers into actionable insights.
 
-## Features
+## Overview
 
-- **PDF Text Extraction**: Efficiently extracts text from uploaded PDF research papers using `PyPDF2`.
-- **Interactive Chat with Papers**: Users can ask questions about the paper to receive context-aware responses, enhancing comprehension.
-- **Plagiarism Check**: Uses AI to ensure that plagiarism is less than 10%, assessing originality through detailed analysis.
-- **Flowchart Generation**: Automatically generates visualizations of the paper's structure and methodology utilizing Graphviz.
-- **Research Highlights Extraction**: Summarizes key contributions, novel findings, and practical applications into concise, actionable insights.
-- **Similar Paper Matching**: Utilizes FAISS vector search along with TF-IDF embeddings to identify similar papers based on content analysis.
-- **Paper Translation Support**: Provides functionality for translating academic papers into multiple languages (specific implementation not shown in provided files).
+PaperSense is an innovative application that helps researchers, students, and professionals quickly understand and extract value from academic research papers. Using advanced AI techniques, PaperSense analyzes PDF research papers to provide comprehensive insights, interactive Q&A, visual representations, and practical applications of research findings.
+
+## Key Features
+
+- **Interactive Paper Chat**: Ask questions about any aspect of the paper and get contextually relevant answers from the AI.
+- **Comprehensive Paper Analysis**: Extract core concepts, methodology, and findings with AI-powered analysis.
+- **Visual Flowcharts**: Generate structured flowcharts representing the paper's methodology and logical structure.
+- **Research Highlights**: Quickly grasp key takeaways and business applications of academic research.
+- **Similar Papers Discovery**: Find and explore related publications to broaden understanding of the topic.
+- **Startup Insights**: Generate detailed step-by-step implementation roadmaps for transforming research into real-world businesses.
+- **Citation Analysis**: Explore key references and understand how they support the paper's arguments.
+- **Plagiarism Detection**: Evaluate the originality of papers with section-by-section plagiarism analysis.
+- **What-If Scenarios**: Explore alternative research methodologies by modifying key parameters or approaches.
+
+## Technical Stack
+
+- **Frontend**: Streamlit for interactive web interface
+- **Natural Language Processing**: OpenAI's GPT-4o-mini for text analysis and generation
+- **Vector Storage**: FAISS for efficient similarity search
+- **Text Processing**: TF-IDF Vectorization for document embeddings
+- **PDF Processing**: PyPDF2 for text extraction
+- **Visualization**: QuickChart API for flowchart generation
+- **External Integration**: SerpAPI for similar paper searches
 
 ## Installation
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/paper-sense.git
-   cd paper-sense
+   git clone https://github.com/animishtripathy24/PaperSense.git
+   cd PaperSense
    ```
 
 2. Install the required dependencies:
@@ -25,11 +41,11 @@ A comprehensive tool for analyzing academic papers, creating flowcharts, and pro
    pip install -r requirements.txt
    ```
 
-3. Create a `.env` file in the root directory and add your TogetherAI API key:
-   ```plaintext
-   TOGETHER_API_KEY="your-together-api-key-here"
-   SERPAPI_KEY="your-serpapi-key-here"
-   PROJECT_TOKEN="your-project-token-here"
+3. Create a `.env` file in the root directory with your API keys:
+   ```
+   OPENAI_API_KEY=your-openai-api-key-here
+   SERPAPI_KEY=your-serpapi-key-here
+   PROJECT_TOKEN=your-prompt-analytics-token-here
    ```
 
 ## Usage
@@ -39,64 +55,45 @@ A comprehensive tool for analyzing academic papers, creating flowcharts, and pro
    streamlit run app.py
    ```
 
-2. Open your web browser and navigate to the URL displayed in the terminal (usually http://localhost:8501).
+2. Upload your academic paper(s) in PDF format using the sidebar.
 
-3. Upload a PDF research paper using the file uploader.
+3. Click "Process Papers" to analyze the documents.
 
-4. Use the different tabs to access functionalities such as:
-    - Analyzing paper content.
-    - Checking for plagiarism issues.
-    - Engaging in interactive Q&A with the paper's content.
-    - Visualizing data through flowcharts.
-    - Extracting highlights and finding similar research.
+4. Use the chat interface to ask specific questions about the paper.
+
+5. Explore the various analysis tools available in the tabs:
+   - 📑 Paper Analysis
+   - 📊 Research Flowchart
+   - 🔍 Research Highlights
+   - 📚 Similar Papers
+   - 💼 Startup Insights
+   - 🧪 What-If Scenarios
+
+## Application Workflow
+
+1. **Document Upload**: Users upload PDF research papers through the Streamlit interface.
+2. **Text Extraction**: PyPDF2 extracts text content from the PDFs.
+3. **Text Chunking**: Content is divided into manageable chunks for processing.
+4. **Vector Embedding**: TF-IDF vectorization creates embeddings for efficient retrieval.
+5. **Interactive Analysis**: Users interact with the paper's content through various analysis tools.
+6. **AI-Powered Insights**: OpenAI's GPT-4o-mini generates contextual responses and insights.
 
 ## Requirements
 
 - Python 3.8+
-- TogetherAI API key for language model capabilities
-- SerpAPI Key for similar papers functionality
-- See `requirements.txt` for all Python dependencies.
+- OpenAI API key
+- SerpAPI key (for similar papers functionality)
+- Internet connection for external API calls
 
-## How It Works
+## Contributors
 
-The application employs several powerful libraries:
-- **LangChain**: For building a Retrieval-Augmented Generation (RAG) pipeline that supports interaction with uploaded documents.
-- **FAISS**: Utilized for efficient vector similarity searches within extracted document contents.
-- **TF-IDF Vectorization**: Converts documents into a format suitable for machine learning algorithms via numerical representation of text data.
-- **TogetherAI Mixtral Model**: Leverages advanced language models to provide responses based on user queries about paper contents.
-- **Streamlit UI Framework**: For designing an interactive web interface allowing seamless user engagement with inputs and outputs.
-
-## Analytics Tracking
-
-The application maintains a detailed log of prompt analytics through `prompt_analytics.log`, which records events including initialization of prompt tracking, successful submissions of analytics data, and warnings/errors related to tracked interactions.
-
-### Log Example:
-```
-2025-03-25 17:39:03,254 - pypeprompts.main - INFO - Analytics data submitted successfully. Response: {"message":"Analytics data saved successfully"}
-...
-```
+- Animish Tripathy
 
 ## License
 
-MIT License (No specific license file found)
+[MIT License](LICENSE)
 
-## Version Information
+## Acknowledgments
 
-Version: 1  
-Last Updated: 2025-03-27T10:52:02Z  
-
-## Release Notes
-
-### New Features Added
-- Enhanced functionality for flowchart generation based on paper structure.
-
-### Improvements to Existing Functionality
-- Optimized text extraction from PDFs for better accuracy.
-
-### Release Date 
-Released on March 25, 2025.
-
-### Key Files Modified Since Last Update
-1. `app.py`: Revised processing logic supporting new features added in this version including enhanced error handling and logging mechanisms related to prompt analytics captured in `prompt_analytics.log`.
-
-2. `prompt_analytics.log`: Updated to dynamically capture submission data that helps improve future iterations through analyzed performance metrics.
+- This project uses various open-source libraries and APIs to provide its functionality.
+- Special thanks to the developers of Streamlit, LangChain, FAISS, and other tools that make this application possible.

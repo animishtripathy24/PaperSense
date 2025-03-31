@@ -163,7 +163,7 @@ def get_conversation_chain(vectorstore):
     """Get the conversation chain for the chatbot"""
     # Create a wrapper for OpenAI that conforms to LangChain's LLM interface
     class OpenAIWrapper(LLM):
-        client: Any
+        client: Any = None  # Set default value to None
         
         def __init__(self, api_key):
             super().__init__()
@@ -180,6 +180,9 @@ def get_conversation_chain(vectorstore):
             run_manager: Optional[CallbackManagerForLLMRun] = None,
             **kwargs: Any,
         ) -> str:
+            if not self.client:
+                raise ValueError("OpenAI client is not initialized")
+                
             response = self.client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[{"role": "user", "content": prompt}],
