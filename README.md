@@ -63,47 +63,57 @@ PaperSense is an innovative application that helps researchers, students, and pr
 
 4. Use the chat interface to ask specific questions about the paper.
 
-5. Explore the various analysis tools available in the tabs:
-   - 📑 Paper Analysis
-   - 📊 Research Flowchart
-   - 🔍 Research Highlights
-   - 📚 Similar Papers
-   - 💼 Startup Insights
-   - 🧪 What-If Scenarios
+5. Explore various analysis tools available in different tabs:
+   - 📑 Paper Analysis 
+   - 📊 Research Flowchart 
+   - 🔍 Research Highlights 
+   - 📚 Similar Papers 
+   - 💼 Startup Insights 
+   - 🧪 What-If Scenarios 
 
 ## ⚙️ Application Workflow
 
 1. **Document Upload**: Users upload PDF research papers through the Streamlit interface.
-2. **Text Extraction**: PyPDF2 extracts text content from the PDFs.
-3. **Text Chunking**: Content is divided into manageable chunks for processing.
-4. **Vector Embedding**: TF-IDF vectorization creates embeddings for efficient retrieval.
-5. **Interactive Analysis**: Users interact with the paper's content through various analysis tools.
-6. **AI-Powered Insights**: OpenAI's GPT-4o-mini generates contextual responses and insights.
+2. **Text Extraction & Processing**: PyPDF2 extracts text content from PDFs efficiently; content is then divided into manageable chunks using TF-IDF vectorization to create embeddings for effective retrieval.
+3. **Interactive Analysis & Insights Generation**: Users interact with paper content through various tools while OpenAI's GPT model provides contextual responses.
 
 ## 📦 Requirements
 
 - Python 3.8+
-- OpenAI API key
-- SerpAPI key (for similar papers functionality)
-- Internet connection for external API calls
+- OpenAI API key (for NLP features)
+- SerpAPI key (for similar paper functionalities)
+
+An internet connection is required due to external API calls.
 
 ## 🔮 Future Enhancements
 
-- Multi-language support for paper analysis
-- Advanced visualization of citation networks
-- Collaborative research tools for team environments
-- Mobile application for on-the-go research analysis
-- Integration with reference management systems
+Future updates may include:
+
+- Multi-language support for broader accessibility in paper analysis.
+- Advanced visualization features such as citation networks to better illustrate connections between works.
+- Collaborative tools enabling team environments within research settings.
+- A mobile application to facilitate on-the-go access to analytical features.
 
 ## 👥 Contributors
 
-- Animish Tripathy
+### Maintainer:
+* Animish Tripathy *(Main Contributor)*
 
 ## 📄 License
 
-[MIT License](LICENSE)
+This project is licensed under an [MIT License](LICENSE).
 
-## 🙏 Acknowledgments
+## 📝 Release Notes
 
-- This project uses various open-source libraries and APIs to provide its functionality.
-- Special thanks to the developers of Streamlit, LangChain, FAISS, and other tools that make this application possible. 
+### Version 1  
+Released on 2025-03-31T14:31:51.990Z  
+
+#### New Features Added:
+  - Enhanced interactive chat functionality allowing deeper engagement with uploaded papers.
+  
+#### Improvements Made:
+  - Improved efficiency in document processing within `app.py`, leading to faster response times during analyses.
+
+### Acknowledgments 
+
+Special thanks to all open-source libraries utilized in this project including but not limited to Streamlit, LangChain, FAISS, PyPDF2, and others which contribute significantly towards enhancing this application's capabilities.
